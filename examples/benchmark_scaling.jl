@@ -9,7 +9,7 @@ f(k) = exp(-0.1 * k) * cos(10.0 * k)
 kmax = 50.0  # Larger range to force more work
 x_vec = collect(range(0.1, 10.0, length=100_000)) # High resolution (100k points)
 
-println("Benchmarking CZT (100_000 points)...")
+println("Benchmarking CZT (100k points)...")
 b_czt = @benchmark sommerfeld_integral($f, $x_vec, $kmax, 1)
 
 println("Benchmarking QuadGK (100k points)...")

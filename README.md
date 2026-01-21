@@ -88,9 +88,7 @@ The following table shows 5 representative samples from a vectorized computation
 | 1.525 | 0.50872 | 0.50872 | $1.82 \times 10^{-7}$ |
 | 2.000 | 0.22558 | 0.22558 | $3.03 \times 10^{-7}$ |
 
-The algorithm is also validated against **Analytical Exponential Kernels** and **Thermal Ion Line** profiles to ensure physical consistency with standard Incoherent Scatter Radar (ISR) spectral models.
-
-*See [examples/validate_quadgk.jl](https://github.com/doopees/SommerfeldCZT.jl/tree/main/examples/validate_quadgk.jl).*
+The algorithm is also validated against **Analytical Exponential Kernels** and **Thermal Ion Line** profiles to ensure physical consistency with standard Incoherent Scatter Radar (ISR) spectral models. See [examples/validate_quadgk.jl](https://github.com/doopees/SommerfeldCZT.jl/tree/main/examples/validate_quadgk.jl).
 
 ## Performance & Scaling
 
@@ -101,9 +99,7 @@ For high-resolution signal processing (e.g., $N = 10^5$ observation points), thi
 | **Iterative QuadGK** | 100,000 | ~11.58 s | 1,019.3 MiB | 1x (Baseline) |
 | **SommerfeldCZT.jl** | 100,000 | **129.45 ms** | **32.8 MiB** | **~89.4x** |
 
-*Benchmarks performed on an oscillatory integrand $f(k) = e^{-0.1k}\cos(10k)$ with `kmax=50`. See [examples/benchmark_scaling.jl](https://github.com/doopees/SommerfeldCZT.jl/tree/main/examples/benchmark_scaling.jl).*
-
-For smaller $N$, the overhead of FFTs may make CZT less efficient than direct quadrature, but as $N$ increases, the advantages become pronounced.
+For smaller $N$, the overhead of FFTs may make CZT less efficient than direct quadrature, but as $N$ increases, the advantages become pronounced. See [examples/benchmark_scaling.jl](https://github.com/doopees/SommerfeldCZT.jl/tree/main/examples/benchmark_scaling.jl).
 
 ## Example: Thermal Ion Line
 In Incoherent Scatter Radar (ISR) theory, the Sommerfeld integral transforms a **Power Spectral Density (PSD)** $f(k)$ into an **Autocorrelation Function (ACF)**.
@@ -115,7 +111,7 @@ The plot below demonstrates that the CZT implementation (using $k_{max}=8$ and 1
 
 ![Gaussian ACF Validation](examples/gaussian_acf_validation.png)
 
-*See [examples/plot_gaussian_acf.jl](https://github.com/doopees/SommerfeldCZT.jl/tree/main/examples/plot_gaussian_acf.jl).*
+See [examples/plot_gaussian_acf.jl](https://github.com/doopees/SommerfeldCZT.jl/tree/main/examples/plot_gaussian_acf.jl).
 
 ## References
 
