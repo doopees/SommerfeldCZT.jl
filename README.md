@@ -32,7 +32,7 @@ for $x_m$ an arbitrary  vector of samples of $x$. While a standard DFT requires 
 
 ```julia
 using Pkg
-Pkg.add(url="[https://github.com/doopees/SommerfeldCZT.jl](https://github.com/doopees/SommerfeldCZT.jl)")
+Pkg.add(url="https://github.com/doopees/SommerfeldCZT.jl")
 ```
 
 ## API Reference
