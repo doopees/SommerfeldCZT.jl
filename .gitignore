@@ -1,0 +1,12 @@
+/Manifest.toml
+.vscode/
+
+# Compiled files
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+/deps/deps.jl
+
+# OS Specific
+.DS_Store
+Thumbs.db
