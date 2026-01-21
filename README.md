@@ -11,7 +11,7 @@ Sommerfeld integrals are common in electromagnetics and radar science. They are 
 
 ## Mathematical Foundation
 
-The package solves integrals of the general form\
+The package solves integrals of the general form
 
 $$I(x) = \int_{0}^{k_{max}} f(k) e^{\alpha k x} dk.$$
 
@@ -76,7 +76,7 @@ custom_results = sommerfeld_integral(f, r, 8.0, 5, alpha_custom)
 
 ## Numerical Validation
 
-The `sommerfeld_integral` function evaluates the integral $I(x)$ across the entire range of observation points `x` simultaneously. To verify accuracy, we compare the CZT output against the adaptive Gauss-Kronrod method ([**QuadGK**](https://juliamath.github.io/QuadGK.jl/stable/)) for a damped oscillatory integrand\
+The `sommerfeld_integral` function evaluates the integral $I(x)$ across the entire range of observation points `x` simultaneously. To verify accuracy, we compare the CZT output against the adaptive Gauss-Kronrod method ([**QuadGK**](https://juliamath.github.io/QuadGK.jl/stable/)) for a damped oscillatory integrand
 
 $$f(k) = e^{-0.5k} \cos(k).$$
 
@@ -106,7 +106,7 @@ For smaller $N$, the overhead of FFTs may make CZT less efficient than direct qu
 ## Example: Thermal Ion Line
 In Incoherent Scatter Radar (ISR) theory, the Sommerfeld integral transforms a **Power Spectral Density (PSD)** $f(k)$ into an **Autocorrelation Function (ACF)**.
 
-The simplest model for an ion line assumes a Gaussian velocity distribution. For such a Gaussian PSD, $f(k) = e^{-k^2/2}$, the analytical Sommerfeld integral (from 0 to $\infty$) is\
+The simplest model for an ion line assumes a Gaussian velocity distribution. For such a Gaussian PSD, $f(k) = e^{-k^2/2}$, the analytical Sommerfeld integral (from 0 to $\infty$) is
 
 $$I(x) = \sqrt{\frac{\pi}{2}} e^{-x^2/2}.$$
 
