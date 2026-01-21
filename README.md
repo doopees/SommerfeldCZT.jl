@@ -113,7 +113,7 @@ $$I(x) = \sqrt{\frac{\pi}{2}} e^{-x^2/2}.$$
 The figure below demonstrates that the CZT implementation perfectly recovers the analytical ACF profile.
 
 <p align="center">
-  <img src="examples/gaussian_acf_validation.png" width="90%">
+  <img src="examples/gaussian_acf_validation.png" alt="Gaussian ACF Validation">
   <br>
   <i>Fig. 1. Validation of the CZT solver against an analytical Gaussian kernel.</i>
 </p>
