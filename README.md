@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Julia 1.10+](https://img.shields.io/badge/julia-1.10+-cb3c33.svg)](https://julialang.org/)
 
-A high-performance Julia implementation of the **Adaptive Chirp-Z Transform (CZT)** for evaluating Sommerfeld-type integrals, based on the method by  [**Li et al. (1991)**](https://ieeexplore.ieee.org/document/121603). Achieved up to **90x faster** evaluation and **30x lower** memory footprint than standard quadrature at scale.
+A high-performance Julia implementation of the **Adaptive Chirp-Z Transform (CZT)** for evaluating Sommerfeld-type integrals, based on the method by Li et al. [[1]](#1). Achieved up to **90x faster** evaluation and **30x lower** memory footprint than standard quadrature at scale.
 
 ## Overview
 Sommerfeld integrals are common in electromagnetics and radar science. They are often highly oscillatory and difficult to compute using standard quadrature. This package uses the Chirp-Z Transform (CZT) to convert the integral into a convolution, which is then solved efficiently using FFTs.
@@ -18,7 +18,7 @@ $$I(x) = \int_{0}^{k_{max}} f(k) e^{\alpha k x} dk.$$
 Where $x$ is typically a spatial coordinate or time delay, and $\alpha$ is an arbitrary complex constant. While a standard Discrete Fourier Transform (DFT) restricts the output grid spacing, the CZT allows for an arbitrary range and density of the output vector $x$ without losing the efficiency of the FFT.
 
 ## Key Features
-* **Computational Efficiency:** Optimized for large-scale data ($N>10^3$). Operations are reduced to $O(N\log N)$ ([Li et al., 1991](#references)), avoiding the linear time and memory growth of point-by-point quadrature.
+* **Computational Efficiency:** Optimized for large-scale data ($N>10^3$). Operations are reduced to $O(N\log N)$ [[1]](#1), avoiding the linear time and memory growth of point-by-point quadrature.
 * **Extreme Memory Efficiency:** Uses pre-allocated buffers and vectorized transforms to reduce memory overhead by up to 97% compared to iterative methods.
 * **Adaptive Refinement:** Iteratively doubles the number of integration samples until convergence.
 * **Contour Flexibility:** The complex parameter $\alpha$ allows the evaluation to occur along paths in the complex plane, which is essential for bypassing poles or branch cuts in integrands.
@@ -76,7 +76,7 @@ custom_results = sommerfeld_integral(f, r, 8.0, 5, alpha_custom)
 
 ## Numerical Validation
 
-The `sommerfeld_integral` function evaluates the integral $I(x)$ across the entire range of observation points `x` simultaneously. To verify accuracy, we compare the CZT output against the adaptive Gauss-Kronrod method ([**QuadGK**](https://juliamath.github.io/QuadGK.jl/stable/)) for a damped oscillatory integrand
+The `sommerfeld_integral` function evaluates the integral $I(x)$ across the entire range of observation points `x` simultaneously. To verify accuracy, we compare the CZT output against the adaptive Gauss-Kronrod method ([QuadGK](https://juliamath.github.io/QuadGK.jl/stable/)) for a damped oscillatory integrand
 
 $$f(k) = e^{-0.5k} \cos(k).$$
 
@@ -98,7 +98,7 @@ For high-resolution signal processing (e.g., $N = 10^5$ observation points), thi
 
 | Method | Points ($N$) | Median Execution Time | Memory Usage | Speedup |
 | :--- | :---: | ---: | ---: | ---: |
-| **Iterative QuadGK** | 100,000 | ~11.58 s | 1,019.3 MiB | 1x (Baseline) |
+| **QuadGK** | 100,000 | ~11.58 s | 1,019.3 MiB | 1x (Baseline) |
 | **SommerfeldCZT.jl** | 100,000 | **129.45 ms** | **32.8 MiB** | **~89.4x** |
 
 For smaller $N$, the overhead of FFTs may make CZT less efficient than direct quadrature, but as $N$ increases, the advantages become pronounced. See [examples/benchmark_scaling.jl](https://github.com/doopees/SommerfeldCZT.jl/tree/main/examples/benchmark_scaling.jl).
@@ -112,13 +112,16 @@ $$I(x) = \sqrt{\frac{\pi}{2}} e^{-x^2/2}.$$
 
 The figure below demonstrates that the CZT implementation perfectly recovers the analytical ACF profile.
 
-![Gaussian ACF Validation](examples/gaussian_acf_validation.png)
+<p align="center">
+  <img src="examples/gaussian_acf_validation.png" width="90%">
+  <br>
+  <i>Fig. 1. Validation of the CZT solver against an analytical Gaussian kernel.</i>
+</p>
 
 See [examples/plot_gaussian_acf.jl](https://github.com/doopees/SommerfeldCZT.jl/tree/main/examples/plot_gaussian_acf.jl).
 
 ## References
-
-**Li, Y. L., Liu, C. H., & Franke, S. J. (1991).** *Adaptive evaluation of the Sommerfeld-type integral using the chirp z-transform*. IEEE Transactions on Antennas and Propagation, 39(12), 1788-1791. [https://doi.org/10.1109/8.121603](https://doi.org/10.1109/8.121603)
+* <a id="1">[1]</a> Y. L. Li, C. H. Liu and S. J. Franke, "Adaptive evaluation of the Sommerfeld-type integral using the chirp z-transform," in *IEEE Transactions on Antennas and Propagation*, vol. 39, no. 12, pp. 1788-1791, Dec. 1991, [doi: 10.1109/8.121603](https://doi.org/10.1109/8.121603).
 
 ## License
 This project is licensed under the MIT License.
