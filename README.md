@@ -22,10 +22,10 @@ $$I(x_m) \approx Δk \sum_{n=0}^{N-1} f(nΔk) e^{\alpha nΔk x_m},$$
 for $x_m$ an arbitrary  vector of samples of $x$. While a standard DFT requires $x_m$ to be tied to the reciprocal of the sampling rate, `SommerfeldCZT` uses the CZT to evaluate this sum for any linear range of $x_m$ with $O(N\log N)$ complexity. See [[1]](#1) for full details.
 
 ## Key Features
-* **Computational Efficiency:** Optimized for large-scale data ($N>10^3$). Operations are reduced to $O(N\log N)$ [[1]](#1), avoiding the linear time and memory growth of point-by-point quadrature.
-* **Extreme Memory Efficiency:** Uses pre-allocated buffers and vectorized transforms to reduce memory overhead by up to 97% compared to iterative methods.
+* **Computational Efficiency:** Optimized for large-scale data ($N>10^3$). Operations are reduced to $O(N\log N)$ [[1]](#1), improving on the $O(N^2)$ growth of point-by-point quadrature (up to 90x speedup in testing).
+* **Extreme Memory Efficiency:** Uses pre-allocated buffers and in-place `FFTW` transforms to reduce memory overhead compared to point-by-point quadrature (up to 97% reduction in testing).
 * **Adaptive Refinement:** Iteratively doubles the number of integration samples until convergence.
-* **Contour Flexibility:** The complex parameter $\alpha$ allows the evaluation to occur along paths in the complex plane, which is essential for bypassing poles or branch cuts in integrands.
+* **Contour Flexibility:** The complex parameter $\alpha$ allows the evaluation to occur along paths in the complex plane, essential for bypassing poles or branch cuts in integrands.
 * **Lightweight:** Minimal dependencies (only requires `FFTW.jl`).
 
 ## Installation
