@@ -92,14 +92,16 @@ The following table shows 5 representative samples from a vectorized computation
 The algorithm is also validated against **Analytical Exponential Kernels** and **Thermal Ion Line** profiles to ensure physical consistency with standard Incoherent Scatter Radar (ISR) spectral models.
 
 ## Example: Thermal Ion Line
-In Incoherent Scatter Radar (ISR) theory, the simplest model for an ion line assumes a Gaussian velocity distribution. The spectral density $f(k)$ and its corresponding Autocorrelation Function (ACF) form a Fourier pair.
+In Incoherent Scatter Radar (ISR) theory, the Sommerfeld integral transforms a **Power Spectral Density (PSD)** $f(k)$ into an **Autocorrelation Function (ACF)**.
 
-For a Gaussian integrand $f(k) = e^{-k^2/2}$, the analytical Sommerfeld integral (from 0 to $\infty$) is:
+The simplest model for an ion line assumes a Gaussian velocity distribution. For such a Gaussian PSD, $f(k) = e^{-k^2/2}$, the analytical Sommerfeld integral (from 0 to $\infty$) is:
 $$I(x) = \sqrt{\frac{\pi}{2}} e^{-x^2/2}$$
 
 The plot below demonstrates that the CZT implementation (using $k_{max}=8$ and 10 iterations) perfectly recovers the analytical ACF profile:
 
-![Thermal Ion Line Validation](validation_plot.png)
+![Gaussian ACF Validation](examples/gaussian_acf_validation.png)
+
+Check the [examples](https://github.com/doopees/SommerfeldCZT.jl/tree/main/examples) directory.
 
 ## References
 
