@@ -4,10 +4,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Julia 1.10+](https://img.shields.io/badge/julia-1.10+-cb3c33.svg)](https://julialang.org/)
 
-A high-performance Julia implementation of the **Adaptive Chirp-Z Transform (CZT)** for evaluating Sommerfeld-type integrals, based on the method by Li et al. [[1]](#1). Achieved up to **90x faster** evaluation and **30x lower** memory footprint than standard quadrature at scale.
+A high-performance Julia implementation of the **Adaptive Chirp-Z Transform (CZT)** for evaluating Sommerfeld-type integrals, based on the method by Li et al. [[1]](#1). Achieved up to **90x faster** evaluation and **97% memory reduction** compared to standard iterative quadrature methods.
 
 ## Overview
-Sommerfeld integrals are common in electromagnetics and radar science. They are often highly oscillatory and difficult to compute using standard quadrature. This package uses the Chirp-Z Transform (CZT) to convert the integral into a convolution, which is then solved efficiently using FFTs.
+Sommerfeld integrals are common in electromagnetics and radar science. They are often highly oscillatory and difficult to compute using standard quadrature. This package uses the Chirp-Z Transform to convert the integral into a convolution, which is then solved efficiently using FFTs.
 
 ## Mathematical Foundation
 
@@ -15,7 +15,11 @@ The package solves integrals of the general form
 
 $$I(x) = \int_{0}^{k_{max}} f(k) e^{\alpha k x} dk.$$
 
-Where $x$ is typically a spatial coordinate or time delay, and $\alpha$ is an arbitrary complex constant. While a standard Discrete Fourier Transform (DFT) restricts the output grid spacing, the CZT allows for an arbitrary range and density of the output vector $x$ without losing the efficiency of the FFT.
+Where $x$ is typically a spatial coordinate or time delay, and $\alpha$ is an arbitrary complex constant. By discretizing the integral into $N$ samples with a spacing of $Δk=k_{max}​/N$, the integral is approximated as a Riemann sum:
+
+$$I(x_m) \approx Δk \sum_{n=0}^{N-1} f(nΔk) e^{\alpha nΔk x_m},$$
+
+for $x_m$ an arbitrary  vector of samples of $x$. While a standard DFT requires $x_m$ to be tied to the reciprocal of the sampling rate, `SommerfeldCZT` uses the CZT to evaluate this sum for any linear range of $x_m$ with $O(N\log N)$ complexity. See [[1]](#1) for full details.
 
 ## Key Features
 * **Computational Efficiency:** Optimized for large-scale data ($N>10^3$). Operations are reduced to $O(N\log N)$ [[1]](#1), avoiding the linear time and memory growth of point-by-point quadrature.
