@@ -110,7 +110,7 @@ The simplest model for an ion line assumes a Gaussian velocity distribution. For
 
 $$I(x) = \sqrt{\frac{\pi}{2}} e^{-x^2/2}.$$
 
-The plot below demonstrates that the CZT implementation (using $k_{max}=8$ and 10 iterations) perfectly recovers the analytical ACF profile:
+The figure below demonstrates that the CZT implementation perfectly recovers the analytical ACF profile.
 
 ![Gaussian ACF Validation](examples/gaussian_acf_validation.png)
 
