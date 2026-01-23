@@ -125,7 +125,7 @@ The figure below demonstrates that the CZT implementation perfectly recovers the
 See [examples/plot_gaussian_acf.jl](https://github.com/doopees/SommerfeldCZT.jl/tree/main/examples/plot_gaussian_acf.jl).
 
 ## References
-* <a id="1">[1]</a> Y. L. Li, C. H. Liu and S. J. Franke, "Adaptive evaluation of the Sommerfeld-type integral using the chirp z-transform," in *IEEE Transactions on Antennas and Propagation*, vol. 39, no. 12, pp. 1788-1791, Dec. 1991, [doi: 10.1109/8.121603](https://doi.org/10.1109/8.121603).
+<a id="1">[1]</a> Y. L. Li, C. H. Liu and S. J. Franke, "Adaptive evaluation of the Sommerfeld-type integral using the chirp z-transform," in *IEEE Transactions on Antennas and Propagation*, vol. 39, no. 12, pp. 1788-1791, Dec. 1991, [doi: 10.1109/8.121603](https://doi.org/10.1109/8.121603).
 
 ## License
 This project is licensed under the MIT License.
