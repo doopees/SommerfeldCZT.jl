@@ -1,9 +1,3 @@
----
-layout: default
-title: SommerfeldCZT.jl
-usemathjax: true
----
-
 # SommerfeldCZT.jl
 
 [![Build Status](https://github.com/doopees/SommerfeldCZT.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/doopees/SommerfeldCZT.jl/actions)
