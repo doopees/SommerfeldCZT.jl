@@ -1,10 +1,8 @@
----
-layout: default
-title: SommerfeldCZT.jl
-usemathjax: true
----
-
 # SommerfeldCZT.jl
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
 [![Build Status](https://github.com/doopees/SommerfeldCZT.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/doopees/SommerfeldCZT.jl/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
