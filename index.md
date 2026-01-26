@@ -35,7 +35,9 @@ Sommerfeld integrals are common in electromagnetics and radar science. They are 
 
 The package solves integrals of the general form
 
-$$I(x) = \int_{0}^{k_{max}} f(k) e^{\alpha k x} dk.$$
+$$
+I(x) = \int_{0}^{k_{max}} f(k) e^{\alpha k x} dk.
+$$
 
 Where $x$ is typically a spatial coordinate or time delay, and $\alpha$ is an arbitrary complex constant. By discretizing the integral into $N$ samples with a spacing of $Δk=k_{max}​/N$, the integral is approximated as a Riemann sum:
 
