@@ -1,3 +1,6 @@
 theme: jekyll-theme-minimal
 title: SommerfeldCZT.jl
 description: Sommerfeld integral solver via Chirp Z-Transform
+
+kramdown:
+  math_engine: mathjax
