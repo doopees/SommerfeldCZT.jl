@@ -1,3 +1,9 @@
+---
+layout: post
+title: SommerfeldCZT.jl
+use_math: true
+---
+
 # SommerfeldCZT.jl
 
 <script type="text/javascript" async
