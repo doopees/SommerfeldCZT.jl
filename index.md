@@ -1,19 +1,24 @@
 ---
-layout: post
+layout: default
 title: SommerfeldCZT.jl
-use_math: true
 ---
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
   window.MathJax = {
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$']]
-    }
+      displayMath: [['$$', '$$']],
+      processEscapes: true
+    },
+    svg: { fontCache: 'global' }
   };
 </script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+  .MathJax_Display { overflow-x: auto; overflow-y: hidden; }
+</style>
 
 # SommerfeldCZT.jl
 
